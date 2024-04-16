@@ -1,0 +1,19 @@
+name: first action
+
+on:
+  push: 
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  first_job:
+    name: Prebuild
+    runs-on: ubuntu-lastest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: 
