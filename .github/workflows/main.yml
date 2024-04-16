@@ -16,4 +16,17 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      - name: 
+      - name: cat file.txt
+        run: cat file.txt
+  second_job:
+    name: Install dependencies
+    runs-on: ubuntu-22.04
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v4
+      - name: install dependencies
+        run: |
+          apt install
+          apt upgrade -y
+          apt install wget
+          apt install apache2
