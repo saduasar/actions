@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  Build:
+  Build_and_test:
     name: Build the java app
     runs-on: ubuntu-22.04
     steps: 
@@ -35,6 +35,11 @@ jobs:
         with: 
           name: vprofile-v2.war
           path: target
+
+      - name: Lint testing
+        uses: super-linter/super-linter@v6.4.0 
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
 
     
