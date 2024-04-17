@@ -10,21 +10,21 @@ on:
   workflow_dispatch:
 
 jobs:
- Build:
+  Build:
     name: Build the java app
     runs-on: ubuntu-22.04
     steps: 
-    - name: Checkout source code
-    - uses: actions/checkout@v4
+      - name: Checkout source code
+      - uses: actions/checkout@v4
       
-    - name: Setup JDK 11
-    - uses: actions/setup-java@v3
-      with: 
-        java-version: '11'
-        distribution: 'corretto'
+      - name: Setup JDK 11
+      - uses: actions/setup-java@v3
+        with: 
+          java-version: '11'
+          distribution: 'corretto'
         
-    - name: Build source code with Maven
-      run: mvn install 
+      - name: Build source code with Maven
+        run: mvn install 
       
     
     
