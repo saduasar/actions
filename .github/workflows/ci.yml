@@ -26,14 +26,16 @@ jobs:
       - name: Build source code with Maven
         run: mvn install 
 
+      - name: check artifacts
+        run: |
+          ls -al target
+
       - name: Archive artifacts
         uses: actions/upload-artifact@v4
         with: 
           name: vprofile-v2.war
           path: target
-      - name: check artifacts
-        run: |
-          ls -al target
+      
 
     
     
