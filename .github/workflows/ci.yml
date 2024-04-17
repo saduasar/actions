@@ -30,10 +30,10 @@ jobs:
         uses: actions/upload-artifact@v4
         with: 
           name: vprofile-v2.war
-          path: /target
+          path: target
       - name: check artifacts
         run: |
-          ls -al /target
+          ls -al target
 
     
     
