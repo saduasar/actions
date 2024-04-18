@@ -45,6 +45,7 @@ jobs:
   Image_Build:
     name: Build app image
     runs-on: ubuntu-22.04
+    needs: [ Artifacts_Build_and_test ]
     env: 
       repository_name: vprofile-app
     steps: 
