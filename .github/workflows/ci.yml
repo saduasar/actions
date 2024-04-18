@@ -47,7 +47,7 @@ jobs:
     runs-on: ubuntu-22.04
     needs: [ Artifacts_Build_and_test ]
     env: 
-     # repository_name: vprofile-app
+      repository_name: vprofile-app
       DOCKERHUB_USERNAME: saduasar
     steps: 
       - name: Checkout source code
