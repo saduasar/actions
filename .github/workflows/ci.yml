@@ -61,12 +61,16 @@ jobs:
         with:
           username: ${{ env.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+          
+      - name: Build image    
+        run: |
+          docker build -t saduasar/${{ env.repository_name }}:${{ github.run_number }} .
      
-      - name: Build and push
-        uses: docker/build-push-action@v5
-        with:
-          push: false
-          tags: ${{ env.DOCKERHUB_USERNAME }}/${{ env.repository_name }}:${{ github.run_number }}
+     # - name: Build and push
+   #     uses: docker/build-push-action@v5
+     #   with:
+    #      push: false
+     #     tags: ${{ env.DOCKERHUB_USERNAME }}/${{ env.repository_name }}:${{ github.run_number }}
 
       - name: Check app image
         run: |
