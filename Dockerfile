@@ -20,7 +20,7 @@ FROM tomcat:9-jre11
 RUN rm -rf /usr/local/tomcat/webapps/ROOT*
 
 # Copy the WAR file from the previous build stage into the Tomcat webapps directory, renaming it to ROOT.war
-COPY --from=build /build/target/vprofile-v2.war /usr/local/tomcat/webapps/ROOT.war
+COPY --from=build /build/target/*.war /usr/local/tomcat/webapps/ROOT.war
 
 # Expose port 8080 to allow external access to the Tomcat server
 EXPOSE 8080
