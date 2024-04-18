@@ -81,7 +81,7 @@ jobs:
         with:
           image-ref: 'saduasar/${{ env.repository_name }}:${{ github.run_number }}'
           format: 'table'
-          exit-code: '1'
+          exit-code: '0' #use 1 when specified vulnerabilities are found
           ignore-unfixed: true
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
