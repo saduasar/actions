@@ -32,11 +32,15 @@ jobs:
         run: |
           ls -al target
 
+      - name: Version artifacts
+        run: |
+          mv target/*.war target/vprofile-v2-$(date)-${{ github.run_number }}.war
+
       - name: Archive artifacts
         uses: actions/upload-artifact@v4
         with: 
           name: vprofile-v2.war
-          path: target/vprofile-v2**
+          path: target/*.war
 
      
       
