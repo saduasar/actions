@@ -34,7 +34,7 @@ jobs:
 
       - name: Version artifacts
         run: |
-          mv target/*.war target/vprofile-v2-$(date)-${{ github.run_number }}.war
+          mv target/*.war target/vprofile-v2-${{ github.run_number }}.war
 
       - name: Archive artifacts
         uses: actions/upload-artifact@v4
