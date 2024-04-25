@@ -13,6 +13,11 @@ jobs:
   Artifacts_Build_and_test:
     name: Build the java app
     runs-on: ubuntu-22.04
+    permissions:
+      contents: read
+      packages: read
+      # To report GitHub Actions status checks
+      statuses: write
     steps: 
       - name: Checkout source code
         uses: actions/checkout@v4
