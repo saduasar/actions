@@ -30,12 +30,12 @@ jobs:
           java-version: '11'
           distribution: 'corretto'
 
-      - name: Super-linter
-        uses: super-linter/super-linter@v6.4.1  # x-release-please-version
-        env:
-          # To report GitHub Actions status checks
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          DISABLE_ERRORS: false # this will pass this step ever with errors recorded.
+#      - name: Super-linter
+ #       uses: super-linter/super-linter@v6.4.1  # x-release-please-version
+  #      env:
+   #       # To report GitHub Actions status checks
+    #      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+     #     DISABLE_ERRORS: false # this will pass this step ever with errors recorded.
         
       - name: Build source code with Maven
         run: mvn install 
@@ -46,7 +46,7 @@ jobs:
 
       - name: Version artifacts
         run: |
-          mv target/*.war target/vprofile-v2-${{ github.run_number }}.war
+          mv target/*.war target/vprofile-v2-${{ env.BUILD_NUMBER }}.war
 
       - name: Archive artifacts
         uses: actions/upload-artifact@v4
@@ -60,6 +60,7 @@ jobs:
     needs: [ Artifacts_Build_and_test ]
     env: 
       repository_name: vprofile-app
+      repository_user: saduasar
       #DOCKERHUB_USERNAME: saduasar
     steps: 
       - name: Checkout source code
@@ -76,7 +77,7 @@ jobs:
           
       - name: Build image    
         run: |
-          docker build -t saduasar/${{ env.repository_name }}:${{ github.run_number }} .
+          docker build -t ${{ env.repository_user }}/${{ env.repository_name }}:${{ env.BUILD_NUMBER }} .
      
      # - name: Build and push
    #     uses: docker/build-push-action@v5
@@ -91,12 +92,16 @@ jobs:
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: 'saduasar/${{ env.repository_name }}:${{ github.run_number }}'
+          image-ref: 'saduasar/${{ env.repository_name }}:${{ env.BUILD_NUMBER }}'
           format: 'table'
           exit-code: '0' #use 1 when specified vulnerabilities are found
           ignore-unfixed: true
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
+
+      - name: Push image to repository
+        run: |
+          docker build -t ${{ env.repository_user }}/${{ env.repository_name }}:${{ env.BUILD_NUMBER }}
 
 
 
