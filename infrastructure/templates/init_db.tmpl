@@ -1,0 +1,13 @@
+#!/bin/bash
+
+#sudo apt update 
+#export DEBIAN_FRONTEND=noninteractive
+#sudo apt-get update
+#sudo apt-get upgrade -y
+#sudo apt install git -y
+#sudo apt-get install mysql-client -y
+
+export DEBIAN_FRONTEND=noninteractive
+sudo apt-get install mysql-client -y
+git clone https://github.com/saduasar/vprofile-project.git
+mysql -h ${rds-endpoint} -u ${dbuser} --password=${dbpass} accounts < /home/ubuntu/vprofile-project/src/main/resources/db_backup.sql
