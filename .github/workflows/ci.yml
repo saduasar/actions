@@ -51,7 +51,7 @@ jobs:
       - name: Archive artifacts
         uses: actions/upload-artifact@v4
         with: 
-          name: vprofile-v2-${{ github.run_number }}.war
+          name: vprofile-v2-${{ variables.BUILD_NUMBER }}.war
           path: target/*.war
 
   Image_Build:
