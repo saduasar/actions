@@ -104,7 +104,7 @@ jobs:
 
       - name: Push image to repository
         run: |
-          docker build -t ${{ env.repository_user }}/${{ env.repository_name }}:${{ env.BUILD_NUMBER }}
+          docker push ${{ env.repository_user }}/${{ env.repository_name }}:${{ env.BUILD_NUMBER }}
 
 
 
