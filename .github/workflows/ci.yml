@@ -30,6 +30,7 @@ jobs:
         env:
           # To report GitHub Actions status checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DISABLE_ERRORS: false # this will pass this step ever with errors recorded.
         
       - name: Build source code with Maven
         run: mvn install 
