@@ -105,7 +105,34 @@ jobs:
       - name: Push image to repository
         run: |
           docker push ${{ env.repository_user }}/${{ env.repository_name }}:${{ env.BUILD_NUMBER }}
+      
+  infrastructure_setup:
+    name: Setup k8s cluster for production
+    runs-on: ubuntu-22.04
+    needs: [ Image_Build ]
+    steps:
+      - name: Infrastructure code checkout and setup terraform
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
 
+      - name: Terraform fmt
+        id: fmt
+        run: terraform fmt -check
+        continue-on-error: true
+
+      - name: Terraform Init
+        id: init
+        run: terraform init
+
+      - name: Terraform Validate
+        id: validate
+        run: terraform validate -no-color
+      
+      
+    
+    
+    
+    
 
 
           #####
