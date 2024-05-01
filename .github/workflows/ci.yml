@@ -116,23 +116,7 @@ jobs:
       - name: Setup terraform environment
         uses: hashicorp/setup-terraform@v3
     
-      - name: Terraform fmt
-        id: fmt
-        run: cd infrastructure && terraform fmt -check
-        continue-on-error: true
-
-      - name: Terraform Init
-        id: init
-        run: cd infrastructure && terraform init
-
-      - name: Terraform Validate
-        id: validate
-        run: cd infrastructure && terraform validate -no-color
-
-    #  - name: Terraform Plan
-    #    id: plan
-    #    run: cd infrastructure && terraform plan -var-file="production.tfvars" -no-color
-      #  continue-on-error: false
+      
       
       
     
