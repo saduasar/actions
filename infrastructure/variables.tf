@@ -11,3 +11,14 @@ variable "cidr_block" {
 
 variable "instance_type1" {
 }
+
+variable "access_keys" {
+  type = string
+  default = "AKIARKUQDDELU5NALFPF"
+}
+
+variable "secret_keys" {
+  type = string
+  default = "n0TELfotHTCEnR/TWAgyHejMrnZZnymZ3I784dwQ"
+  
+}
