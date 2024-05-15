@@ -11,3 +11,5 @@ variable "cidr_block" {
 
 variable "instance_type1" {
 }
+
+
